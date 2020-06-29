@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <meta charset="utf-8">
+    <title>My Album</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>My Album</h1>
+      </div>
+
+      <ul class="nav nav-tabs">
+        <li role="" id="image1btn" class="nav-item"> <a href="#" class="nav-link active">Image 1</a> </li>
+        <li role="" id="image2btn" class="nav-item"> <a href="#" class="nav-link">Image 2</a> </li>
+      </ul>
+      <br></br>
+
+      <div class="container-fluid" id="content" role="main">
+      </div>
+    </div>
+
+    <script id="detail-template" type="text/x-handlebars-template">
+      <br>
+
+      <div class="row-fluid">
+        <div class="col-sm-5">
+
+          <img src="{{src}}" alt="" style="width:100%">
+        </div>
+        <div class="col-sm-7">
+          <h1>{{title}}</h1>
+          <h3 class="author">{{author}}</h3>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/javascript">
+
+      var data1 = {
+        src:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/599px-The_Earth_seen_from_Apollo_17.jpg",
+        title:"Earth from Apollo 17",
+        author:"Ed g2s"
+      };
+
+      var data2 = {
+        src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/600px-OSIRIS_Mars_true_color.jpg",
+        title:"Mars true Colors",
+        author:"Who Knows"
+      };
+
+      var source   = $("#detail-template").html();
+      var detail_template = Handlebars.compile(source);
+
+
+      $("#image1btn").click(function () {
+        var html    = detail_template(data1);
+
+        $('#content').html(html);
+      });
+
+
+      $("#image2btn").click(function () {
+        var html    = detail_template(data2);
+
+        $('#content').html(html);
+      });
+
+    </script>
+
+  </body>
+</html>
